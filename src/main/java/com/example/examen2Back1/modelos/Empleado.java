@@ -1,29 +1,36 @@
 package com.example.examen2Back1.modelos;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
 @Entity
 @Table (name = "empleado")
 public class Empleado {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private String nombre;
+    @Column(nullable = false)
     private String apellido;
+    @Column(nullable = false, unique = true, length = 20)
     private String dni;
+    @Column(nullable = false, unique = true)
     private String email;
     private String telefono;
     private String direccion;
     private String cargo;
     private Double salario;
-    private String fechaContratacion;
+    private LocalDate fechaContratacion;
     private Boolean activo;
 
-    private Empleado empleado;
+
 
     public Empleado() {
     }
 
-    public Empleado(Long id, String nombre, String apellido, String dni, String email, String telefono, String direccion, String cargo, Double salario, String fechaContratacion, Boolean activo, Empleado empleado) {
-        this.id = id;
+    public Empleado(String nombre, String apellido, String dni, String email, String telefono, String direccion, String cargo, Double salario, LocalDate fechaContratacion, Boolean activo) {
+
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -34,8 +41,8 @@ public class Empleado {
         this.salario = salario;
         this.fechaContratacion = fechaContratacion;
         this.activo = activo;
-        this.empleado = empleado;
     }
+
 
     public Long getId() {
         return id;
@@ -109,11 +116,11 @@ public class Empleado {
         this.salario = salario;
     }
 
-    public String getFechaContratacion() {
+    public LocalDate getFechaContratacion() {
         return fechaContratacion;
     }
 
-    public void setFechaContratacion(String fechaContratacion) {
+    public void setFechaContratacion(LocalDate fechaContratacion) {
         this.fechaContratacion = fechaContratacion;
     }
 
@@ -125,11 +132,4 @@ public class Empleado {
         this.activo = activo;
     }
 
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
 }

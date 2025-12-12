@@ -2,28 +2,43 @@ package com.example.examen2Back1.modelos;
 
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
 @Entity
 @Table (name = "pedido")
 public class Pedido {
-
+   @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(nullable = false, unique = true)
     private String codigoPedido;
-    private String fechaCreacion;
-    private String fechaEntregaEstimada;
+
+    @Column(nullable = false)
+    private LocalDate fechaCreacion;
+    private LocalDate fechaEntregaEstimada;
+
+    @Column(nullable = false)
     private Double montoTotal;
+
+    @Column(nullable = false)
     private String metodoPago;
+
+    @Column(nullable = false)
     private String estadoPedido;
     private String tipoEntrega;
     private Double costoEnvio;
+
+    @Column(nullable = false)
     private Integer numeroItems;
     private String observaciones;
 
-    private  Pedido pedido;
+
     public Pedido() {
     }
 
-    public Pedido(Long id, String codigoPedido, String fechaCreacion, String fechaEntregaEstimada, Double montoTotal, String metodoPago, String estadoPedido, String tipoEntrega, Double costoEnvio, Integer numeroItems, String observaciones, Pedido pedido) {
+    public Pedido(Long id, String codigoPedido, LocalDate fechaCreacion, LocalDate fechaEntregaEstimada, Double montoTotal, String metodoPago, String estadoPedido, String tipoEntrega, Double costoEnvio, Integer numeroItems, String observaciones) {
         this.id = id;
         this.codigoPedido = codigoPedido;
         this.fechaCreacion = fechaCreacion;
@@ -35,7 +50,6 @@ public class Pedido {
         this.costoEnvio = costoEnvio;
         this.numeroItems = numeroItems;
         this.observaciones = observaciones;
-        this.pedido = pedido;
     }
 
     public Long getId() {
@@ -54,19 +68,19 @@ public class Pedido {
         this.codigoPedido = codigoPedido;
     }
 
-    public String getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(String fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public String getFechaEntregaEstimada() {
+    public LocalDate getFechaEntregaEstimada() {
         return fechaEntregaEstimada;
     }
 
-    public void setFechaEntregaEstimada(String fechaEntregaEstimada) {
+    public void setFechaEntregaEstimada(LocalDate fechaEntregaEstimada) {
         this.fechaEntregaEstimada = fechaEntregaEstimada;
     }
 
@@ -125,14 +139,4 @@ public class Pedido {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
-
-
 }

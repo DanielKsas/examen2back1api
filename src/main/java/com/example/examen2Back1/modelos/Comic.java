@@ -11,23 +11,37 @@ public class Comic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String titulo;
+
+    @Column(nullable = false)
     private Integer numeroEdicion;
+
+    @Column(nullable = false)
     private String editorial;
     private String guionista;
+
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
+
+    @Column(nullable = false)
     private Integer stock;
+
+    @Column(length = 2000)
     private String sinopsis;
+
+    @Column(length = 500)
     private String urlPortada;
     private LocalDate fechaPublicacion;
 
-    private Comic comic;
+
 
     public Comic() {
     }
 
-    public Comic(Long id, String titulo, Integer numeroEdicion, String editorial, String guionista, BigDecimal precio, Integer stock, String sinopsis, String urlPortada, LocalDate fechaPublicacion) {
-        this.id = id;
+    public Comic( String titulo, Integer numeroEdicion, String editorial, String guionista, BigDecimal precio, Integer stock, String sinopsis, String urlPortada, LocalDate fechaPublicacion) {
+
         this.titulo = titulo;
         this.numeroEdicion = numeroEdicion;
         this.editorial = editorial;
@@ -39,13 +53,7 @@ public class Comic {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitulo() {
         return titulo;

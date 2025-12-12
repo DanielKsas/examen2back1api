@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("POST /api/clientes")
+@RequestMapping("/api/clientes")
 public class ControladorCliente {
     @Autowired
     ServicioCliente servicioCliente;

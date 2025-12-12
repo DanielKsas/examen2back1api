@@ -10,23 +10,37 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nombreCompleto;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
     private String telefono;
+
     private String direccion;
+
     private String ciudad;
+
     private LocalDate fechaNacimiento;
+
+    @Column(nullable = false)
     private Boolean cuentaActiva;
+
+    @Column(nullable = false)
     private LocalDateTime fechaRegistro;
 
-    private Cliente cliente;
+
 
     public Cliente() {
     }
 
-    public Cliente(Long id, String nombreCompleto, String email, String password, String telefono, String direccion, String ciudad, LocalDate fechaNacimiento, Boolean cuentaActiva, LocalDateTime fechaRegistro, Cliente cliente) {
-        this.id = id;
+    public Cliente(String nombreCompleto, String email, String password, String telefono, String direccion, String ciudad, LocalDate fechaNacimiento, Boolean cuentaActiva, LocalDateTime fechaRegistro, Cliente cliente) {
+
         this.nombreCompleto = nombreCompleto;
         this.email = email;
         this.password = password;
